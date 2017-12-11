@@ -28,7 +28,6 @@ RUN curl -Lk http://www.atlassian.com/software/crowd/downloads/binary/atlassian-
     && rm /root/crowd.tar.gz \
     && echo "crowd.home=$CROWD_HOME" > $CROWD_INST/crowd-webapp/WEB-INF/classes/crowd-init.properties \    
     && mv $CROWD_INST/apache-tomcat/webapps/ROOT $CROWD_INST/splash-webapp \
-    && rm $CROWD_INST/apache-tomcat/conf/Catalina/localhost/demo.xml \
     && mv $CROWD_INST/apache-tomcat/conf/Catalina/localhost $CROWD_INST/webapps \
     && mkdir -p $CROWD_INST/apache-tomcat/conf/Catalina/localhost \
     && touch $CROWD_INST/.crowd-is-not-configured
