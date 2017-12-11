@@ -8,10 +8,10 @@ for k in $(ls) ; do
   unlink $k
 done
 
-if [ -n "$DEMO_CONTEXT" ]; then
-  echo "Installing demo at $DEMO_CONTEXT"
-  ln -s $CROWD_INST/webapps/demo.xml ${DEMO_CONTEXT}.xml
-fi
+#if [ -n "$DEMO_CONTEXT" ]; then
+#  echo "Installing demo at $DEMO_CONTEXT"
+#  ln -s $CROWD_INST/webapps/demo.xml ${DEMO_CONTEXT}.xml
+#fi
 
 if [ -n "$SPLASH_CONTEXT" ]; then
   echo "Installing splash as $SPLASH_CONTEXT"
