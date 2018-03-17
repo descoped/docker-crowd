@@ -127,12 +127,12 @@ config_line build.properties demo.url "$DEMO_LOGIN_URL"
 config_line build.properties openidserver.url "$CROWDID_LOGIN_URL"
 config_line build.properties crowd.url "$CROWD_URL"
 
-./build.sh
-
 if [ -f "$CROWD_HOME/crowd.properties" ]; then
-#  config_line $CROWD_HOME/crowd.properties crowd.server.url "$(config_line crowd-webapp/WEB-INF/classes/crowd.properties crowd.server.url)"
-#  config_line $CROWD_HOME/crowd.properties application.login.url "$(config_line crowd-webapp/WEB-INF/classes/crowd.properties application.login.url)"
-  cp $CROWD_HOME/crowd.properties $CROWD_INST/crowd-webapp/WEB-INF/classes/crowd.properties
+  config_line $CROWD_HOME/crowd.properties crowd.server.url "$(config_line crowd-webapp/WEB-INF/classes/crowd.properties crowd.server.url)"
+  config_line $CROWD_HOME/crowd.properties application.login.url "$(config_line crowd-webapp/WEB-INF/classes/crowd.properties application.login.url)"
+  config_line $CROWD_HOME/crowd.properties application.password "$(config_line crowd-webapp/WEB-INF/classes/crowd.properties application.password)"
 fi
+
+./build.sh
 
 rm $CROWD_INST/.crowd-is-not-configured
