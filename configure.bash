@@ -13,6 +13,11 @@ done
 #  ln -s $CROWD_INST/webapps/demo.xml ${DEMO_CONTEXT}.xml
 #fi
 
+if [ -n "$CROWD_PROPERTIES" ]; then
+  echo "Copy file $CROWD_PROPERTIES to $CROWD_INST/crowd-webapp/WEB-INF/classes/crowd.properties"
+  ln -s $CROWD_INST/webapps/splash.xml ${SPLASH_CONTEXT}.xml
+fi
+
 if [ -n "$SPLASH_CONTEXT" ]; then
   echo "Installing splash as $SPLASH_CONTEXT"
   ln -s $CROWD_INST/webapps/splash.xml ${SPLASH_CONTEXT}.xml
