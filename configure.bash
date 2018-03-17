@@ -13,11 +13,6 @@ done
 #  ln -s $CROWD_INST/webapps/demo.xml ${DEMO_CONTEXT}.xml
 #fi
 
-if [ -n "$CROWD_PROPERTIES" ]; then
-  echo "Copy file $CROWD_PROPERTIES to $CROWD_INST/crowd-webapp/WEB-INF/classes/crowd.properties"
-  ln -s $CROWD_INST/webapps/splash.xml ${SPLASH_CONTEXT}.xml
-fi
-
 if [ -n "$SPLASH_CONTEXT" ]; then
   echo "Installing splash as $SPLASH_CONTEXT"
   ln -s $CROWD_INST/webapps/splash.xml ${SPLASH_CONTEXT}.xml
@@ -135,8 +130,9 @@ config_line build.properties crowd.url "$CROWD_URL"
 ./build.sh
 
 if [ -f "$CROWD_HOME/crowd.properties" ]; then
-  config_line $CROWD_HOME/crowd.properties crowd.server.url "$(config_line crowd-webapp/WEB-INF/classes/crowd.properties crowd.server.url)"
-  config_line $CROWD_HOME/crowd.properties application.login.url "$(config_line crowd-webapp/WEB-INF/classes/crowd.properties application.login.url)"
+#  config_line $CROWD_HOME/crowd.properties crowd.server.url "$(config_line crowd-webapp/WEB-INF/classes/crowd.properties crowd.server.url)"
+#  config_line $CROWD_HOME/crowd.properties application.login.url "$(config_line crowd-webapp/WEB-INF/classes/crowd.properties application.login.url)"
+  cp $CROWD_HOME/crowd.properties $CROWD_INST/crowd-webapp/WEB-INF/classes/crowd.properties
 fi
 
 rm $CROWD_INST/.crowd-is-not-configured
